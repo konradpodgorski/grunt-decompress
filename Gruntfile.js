@@ -15,7 +15,7 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: 'test/fixtures/cupcakeipsum.txt.gz',
-                        dest: 'cupcakeipsum.txt'
+                        dest: 'tmp/cupcakeipsum.txt'
                     }
                 ]
             }

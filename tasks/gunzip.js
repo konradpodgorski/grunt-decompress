@@ -15,6 +15,9 @@ module.exports = function (grunt) {
 
     grunt.registerMultiTask('gunzip', 'Gunzip files.', function () {
 
+        // required to make fs work, by default is running in sync mode
+        this.async();
+
         this.files.forEach(function (filePair) {
 
             filePair.src.forEach(function (src) {
