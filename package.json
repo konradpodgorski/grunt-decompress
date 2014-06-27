@@ -1,0 +1,11 @@
+{
+    "name": "grunt-decompress",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/konradpodgorski/grunt-decompress.git"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.5"
+    }
+}
