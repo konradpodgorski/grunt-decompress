@@ -8,28 +8,30 @@
 'use strict';
 
 var fs = require('fs'),
-    zlib = require('zlib');
+    zlib = require('zlib'),
+    async = require('async');
 
 module.exports = function (grunt) {
-
 
     grunt.registerMultiTask('gunzip', 'Gunzip files.', function () {
 
         // required to make fs work, by default is running in sync mode
-        this.async();
+        var done = this.async();
 
-        this.files.forEach(function (filePair) {
-
+        async.eachSeries(this.files, function(filePair, callback) {
             filePair.src.forEach(function (src) {
 
-                grunt.log.writeln('Reading ' + src + ' now');
+                grunt.log.write('Decompressing ' + src + ' ...');
 
                 var inp = fs.createReadStream(src, {highWaterMark: 1024});
                 var out = fs.createWriteStream(filePair.dest);
 
-                inp.pipe(zlib.createGunzip()).pipe(out);
+                inp.on('error', callback)
+                    .on('end', callback);
 
+                inp.pipe(zlib.createGunzip()).pipe(out);
+                grunt.log.ok();
             });
-        });
+        }, done);
     });
 };

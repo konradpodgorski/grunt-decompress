@@ -1,11 +1,13 @@
 {
-    "name": "grunt-decompress",
-    "version": "0.0.3",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/konradpodgorski/grunt-decompress.git"
-    },
-    "devDependencies": {
-        "grunt": "~0.4.5"
-    }
+  "name": "grunt-decompress",
+  "version": "0.0.4",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/konradpodgorski/grunt-decompress.git"
+  },
+  "devDependencies": {
+    "async": "^0.9.0",
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "^0.5.0"
+  }
 }
