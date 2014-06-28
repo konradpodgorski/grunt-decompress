@@ -23,7 +23,7 @@ module.exports = function (grunt) {
             filePair.src.forEach(function (src) {
                 grunt.log.write('Untarring ' + src + ' ...');
 
-                var inp = fs.createReadStream(src, {highWaterMark: 1024});
+                var inp = fs.createReadStream(src, {highWaterMark: Math.pow(2,8)});
 
                 inp.on('error', callback)
                     .on('end', callback);
