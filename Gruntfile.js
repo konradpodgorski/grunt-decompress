@@ -14,20 +14,18 @@ module.exports = function (grunt) {
             test: {
                 files: [
                     {
-                        src: 'test/fixtures/cupcakeipsum.txt.gz',
-                        dest: 'tmp/cupcakeipsum.txt'
-                    },
-                    {
-                        src: 'test/fixtures/cupcakeipsum.txt.gz',
-                        dest: 'tmp/cupcakeipsum-copy.txt'
+                        src: 'test/fixtures/ipsum-bundle.tar.gz',
+                        dest: 'tmp/ipsum-bundle.tar'
                     }
                 ]
-            },
-            test2: {
+            }
+        },
+        untar: {
+            test: {
                 files: [
                     {
-                        src: 'test/fixtures/cupcakeipsum.txt.gz',
-                        dest: 'tmp/cupcakeipsum2.txt'
+                        src: 'tmp/ipsum-bundle.tar',
+                        dest: 'tmp/ipsum-bundle'
                     }
                 ]
             }
@@ -43,7 +41,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('test', ['gunzip:test', 'gunzip:test2']);
+    grunt.registerTask('test', ['gunzip:test', 'untar:test']);
     grunt.registerTask('cleanup', ['clean:tmp']); // name of task can't be the same as name of loaded npm task
 
     grunt.registerTask('default', ['test', 'cleanup']);
